@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input-box operation</title>
+</head>
+<body>
+<div class="editor" contenteditable="true"></div>
+<script src="paste.js"></script>
+<script>
+    /*
+    * When the HTML document change to design mode,the document Object expose the method of execCommand().
+    * execCommand(aCommandName, aShowDefaultUI, aValueArgument)
+    * aCommendName[DOMString] copy/bold/insertText/insertImage/insertHTML……
+    * aShowDefaultUI[Boolean] whether to show interfaceUI,and default value is false.
+    * aValueArgument[] optional arg,like when use insertImage,so here to fill the image URL.
+    * */
+    document.querySelector(".editor").addEventListener("paste", async (e) => {
+        let result = await ON_PASTE(e);
+        let command =/^data:image\/png;base64,/.test(result) ? "insertImage" : "insertText";
+        document.execCommand(command, false, result);
+    })
+</script>
+</body>
+</html>
