@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>H5拖拽基础方法</title>
+  <style>
+    .container {
+      width: 100%;
+      display: flex;
+    }
+    .drag-area {
+      width: 400px;
+      text-align: center;
+    }
+    .drag-area div {
+      border: 1px solid #6c63ff;
+      margin-bottom: 20px;
+    }
+    .drag-area div:last-child {
+      margin-bottom: 0;
+    }
+    .drag-area div p {
+      margin: 0;
+      padding: 0;
+      line-height: 50px;
+      color: #fff;
+      background: #6c63ff;
+    }
+    .drag-area img {
+      width: 300px;
+      height: auto;
+    }
+    .dragged-destination {
+      flex: 1;
+      margin-left: 50px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .dragged-destination .target {
+      flex: 1;
+      border: 1px solid #6c63ff;
+      background: rgba(247, 247, 247, .2);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="drag-area">
+    <h2>DRAG TARGET AREA</h2>
+    <div class="drag-box">
+      <p>DRAG PIC1</p>
+      <img src="./image/drag1.png" alt="" id="drag1">
+    </div>
+    <div class="drag-box">
+      <p>DRAG PIC2</p>
+      <img src="./image/drag2.png" alt="" id="drag2">
+    </div>
+  </div>
+  <div class="dragged-destination">
+    <h2>DRAGGED DESTINATION</h2>
+    <div class="target"></div>
+  </div>
+</div>
+<script>
+  let dragTarget = document.querySelectorAll(".drag-box img");
+  for(let i = 0; i < dragTarget.length; i++) {
+    let item = dragTarget[i];
+    item.ondragstart = function (e) {
+      console.log("start drag");
+      e.dataTransfer.setData("itemId", this.id);
+    }
+  }
+  let destinationTarget = document.querySelector(".target");
+  destinationTarget.ondragenter = function (e) {
+    console.log("drag enter");
+    this.style.background = "rgba(247, 247, 247, 1)";
+    e.preventDefault();
+  };
+  destinationTarget.ondragover = function (e) {
+    console.log("drag over");
+    e.preventDefault();
+  };
+  destinationTarget.ondrop = function (e) {
+    console.log("drag drop");
+    this.style.background = "rgba(247, 247, 247, .2)";
+    let itemId = e.dataTransfer.getData("itemId");
+    document.querySelector("#"+itemId).parentNode.removeChild(document.querySelector("#"+itemId));
+    e.preventDefault();
+  };
+  destinationTarget.ondragleave = function (e) {
+    console.log("drag leave");
+    this.style.background = "rgba(247, 247, 247, .2)";
+    e.preventDefault();
+  };
+</script>
+</body>
+</html>
