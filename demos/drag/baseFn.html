@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>H5拖拽基础方法</title>
+  <style>
+    .container {
+      width: 100%;
+      display: flex;
+    }
+    .drag-area {
+      width: 400px;
+      text-align: center;
+    }
+    .drag-area div {
+      border: 1px solid #6c63ff;
+      margin-bottom: 20px;
+    }
+    .drag-area div:last-child {
+      margin-bottom: 0;
+    }
+    .drag-area div p {
+      margin: 0;
+      padding: 0;
+      line-height: 50px;
+      color: #fff;
+      background: #6c63ff;
+    }
+    .drag-area img {
+      width: 300px;
+      height: auto;
+    }
+    .dragged-destination {
+      flex: 1;
+      margin-left: 50px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .dragged-destination .target {
+      flex: 1;
+      border: 1px solid #6c63ff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="drag-area">
+    <h2>DRAG TARGET AREA</h2>
+    <div class="drag-box">
+      <p>DRAG PIC1</p>
+      <img src="./image/drag1.png" alt="" id="drag1">
+    </div>
+    <div class="drag-box">
+      <p>DRAG PIC2</p>
+      <img src="./image/drag2.png" alt="" id="drag2">
+    </div>
+  </div>
+  <div class="dragged-destination">
+    <h2>DRAGGED DESTINATION</h2>
+    <div class="target"></div>
+  </div>
+</div>
+<script>
+  /*
+  * drag-target
+  *
+  * It has Functions as below:
+  * ondragstart => which triggered when the drag-target was dragged start.
+  * ondrag => which triggered when the drag-target was dragging.
+  * ondragend => which triggered when the drag-target was dragged end.
+  *
+  * Note: image and link is draggable default,but like p/span,you have to add property "draggable"
+  * */
+  let dragTarget = document.querySelector("#drag1");
+  dragTarget.ondragstart = () => {
+    console.log("dragstart");
+  };
+  dragTarget.ondrag = () => {
+    console.log("dragging");
+  };
+  dragTarget.ondragend = () => {
+    console.log("dragend");
+  }
+
+  /*
+  * drag-destination
+  *
+  * It has Functions as below:
+  * ondragenter => which triggered when the drag-target enter into the drag-destination area.
+  * ondragover => which triggered when the drag-target keep moving over the drag-destination area.
+  * ondrop => which trigger when leave the drag-target in the drag-destination area.
+  * ondragleave => which triggered when entered the drag-destination area and did't drop and leave.
+  *
+  * Note: Remember to prevent the browser default behaviour.
+  * */
+  let dragDestination = document.querySelector(".target");
+  dragDestination.ondragenter = (e) => {
+    console.log("dragenter");
+    e.preventDefault();
+  };
+  dragDestination.ondragover = (e) => {
+    console.log("dragover");
+    e.preventDefault();
+  };
+  dragDestination.ondrop = (e) => {
+    console.log("dragdrop");
+    e.preventDefault();
+  };
+  dragDestination.ondragleave = (e) => {
+    console.log("dragleave");
+    e.preventDefault();
+  }
+</script>
+</body>
+</html>

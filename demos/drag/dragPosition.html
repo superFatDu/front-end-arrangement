@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>darg and fixed it</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .container img {
+      position: absolute;
+      height: 300px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="./image/drag1.png" alt="" class="drag-target">
+</div>
+<script>
+  let offsetX, offsetY;
+  let dragTarget = document.querySelector(".drag-target");
+  dragTarget.ondragstart = (e) => {
+    console.log("drag-target start dragging.");
+    // record the init offsetX and offsetY,which is relative to the drag-target.
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
+    console.log(`x: ${offsetX}, y: ${offsetY}`);
+  };
+  dragTarget.ondrag = (e) => {
+    console.log("drag-target keeps dragging");
+    let x = e.pageX;
+    let y = e.pageY;
+    console.log(`${x} - ${y}`);
+    // last moment of ondrag,we can't read the mouse position,pageX and pageY equals 0;
+    if (x === 0 && y === 0) return false;
+    x -= offsetX;
+    y -= offsetY;
+
+    // rewrite the drag-target position
+    dragTarget.style.left = x + "px";
+    dragTarget.style.top = y + "px";
+  }
+  dragTarget.ondragend = (e) => {
+    console.log("drag-target drag end");
+  }
+</script>
+</body>
+</html>
