@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>drag pic into the box</title>
+  <style>
+    .container {
+      width: 100%;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .container .target {
+      width: 600px;
+      height: 300px;
+      margin: 0 auto;
+      border: 1px solid #6c63ff;
+      border-radius: 6px;
+      background: rgba(230, 230, 230, .2);
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h3>DRAG FILES INTO THE BELOW BOX AREA</h3>
+  <div class="target"></div>
+</div>
+<script>
+  // prevent the default behaviour => open the file in a new window
+  document.ondragover = (e) => {
+    e.preventDefault();  // trigger ondrop()
+  };
+  document.ondrop = (e) => {
+    e.preventDefault(); // prevent open a new window to show the file
+  };
+
+  // monitor the drag-destination and try to get the file data.
+  let target = document.querySelector(".target");
+  target.ondragover = (e) => {
+    e.preventDefault();  // the same to trigger ondrop();
+  };
+  target.ondrop = (e) => {
+    console.log("a file drop in the area");
+    for(let i = 0; i < e.dataTransfer.files.length; i++) {
+      let file = e.dataTransfer.files[i];
+      // read file and append into the Node
+      let fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onloadend = (e) => {
+        console.log("File read complete");
+        let img = new Image();
+        img.style["width"] = "30%";
+        img.style["height"] = "auto";
+        img.src = e.target.result;
+        target.appendChild(img);
+      }
+    }
+  }
+</script>
+</body>
+</html>
