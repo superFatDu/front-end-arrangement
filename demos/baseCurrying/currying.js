@@ -65,3 +65,5 @@ let checkEmail = _check(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/);
 // handler
 checkPhone("145675666");
 checkEmail("12345678@163.com");
+
+// There is a error,and the example just is a example.
