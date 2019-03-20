@@ -85,5 +85,5 @@ console.log(3+obj); // String场景 3default
 console.log(obj + "");  // Default场景 default
 console.log(String(obj)); //String场景 str
 ```
-- Note:Symbol.toPrimitive() is highest priority.
+- Note:Symbol.toPrimitive() is the highest priority.
 

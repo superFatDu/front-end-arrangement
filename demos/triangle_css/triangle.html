@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>triangle with css</title>
+    <style>
+        .container {
+            position: relative;
+        }
+        .top {
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid #6c63ff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            left: 1px;
+            top: 10px;
+        }
+        .left {
+            border-right: 10px solid #6c63ff;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 12px;
+        }
+        .right {
+            width: 0;
+            height: 0;
+            border-left: 10px solid #6c63ff;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bottom {
+            width: 0;
+            height: 0;
+            border-top: 10px solid #6c63ff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 1px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="bottom"></div>
+</div>
+<script>
+    // Actually border's sharpe like the picture draws on the page.
+    // If you wanna draw a upwards triangle,and you can know that the relative borders are the left/right/bottom.
+    // And the bottom should be colored and the other should be transparent.
+
+    // The same,if you wanna draw a left triangle,you can know that the relative borders are right/top/bottom.
+    // And the right should be colored and the other should be transparent.
+</script>
+</body>
+</html>
