@@ -26,13 +26,31 @@ function compile(el, vm) {
   // el表示编译控制的范围
   vm.$el = document.querySelector(el);
   let fragment = document.createDocumentFragment();
+  let child;
   while (child = vm.$el.firstChild) {
     fragment.appendChild(child); // 将el中的内容移入到内存中
+    // fragment => #text/p/#text/p/#text
   }
-  Array.from(fragment.childNodes).forEach(function (node) { // 循环子节点
-
-  })
-  //vm.$el.appendChild(fragment);
+  replace(fragment);
+  function replace(fragment) {
+    Array.from(fragment.childNodes).forEach(node => {
+      let text = node.textContent;
+      let reg = /^\{\{(.*)\}\}$/;
+      if (node.nodeType === 3 && reg.test(text)) {
+        let arr = RegExp.$1.split(".");
+        let val = vm;
+        arr.forEach(key => {
+          val = val[key];
+        });
+        //node.textContent = val;
+        node.textContent = text.replace(reg, val);
+      }
+      if (node.childNodes) {
+        replace(node);
+      }
+    })
+  }
+  vm.$el.appendChild(fragment);
 }
 // 观察对象给对象添加Object.defineProperty
 function observe(data) {
