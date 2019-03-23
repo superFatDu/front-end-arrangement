@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>链接视图与数据</title>
+</head>
+<body>
+<div id="app">
+  <p>{{a.a}}</p>
+  <p>{{b}}</p>
+</div>
+<script src="./viewAndData.js"></script>
+<script>
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      a: {
+        a: "This is a"
+      },
+      b: "This is b"
+    }
+  })
+</script>
+</body>
+</html>

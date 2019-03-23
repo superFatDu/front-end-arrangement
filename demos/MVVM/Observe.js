@@ -53,4 +53,4 @@ let vue = new Vue({
 console.log(vue.$options.data);
 vue.$data.a = {a: 2};
 console.log(vue.$data.a);
-console.log(vue.a);
+console.log(vue.a.a);
