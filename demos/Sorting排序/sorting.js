@@ -17,7 +17,7 @@ function BubbleSort(arr) {
     console.log(arr);
   }
 }
-//BubbleSort(arr);
+// BubbleSort(arr);
 // [ 4, 3, 2, 1, 5 ]
 // [ 3, 2, 1, 4, 5 ]
 // [ 2, 1, 3, 4, 5 ]
@@ -78,3 +78,4 @@ function InsertSort(arr) {
 function QuickSort(arr) {
   // TODO
 }
+QuickSort(arr);
