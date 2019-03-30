@@ -37,7 +37,3 @@ var _loop = function _loop(i) {
 for(var i = 0; i < 3; i++) {
   _loop(i);
 }
-
-/*
-*
-* */
