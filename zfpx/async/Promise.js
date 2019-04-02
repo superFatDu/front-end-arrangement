@@ -39,20 +39,18 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
   // 判断then()的回调是否是函数，如果不是就把成功值或者失败原因抛向后一个then()
   onFulfilled = typeof onFulfilled === "function" ? onFulfilled : value => value;
   onRejected = typeof onRejected === "function" ? onRejected: reason => { throw reason };
-  console.log("typeof:",typeof onFulfilled);
-  // 如果是挂起
+  // 如果是挂起(异步的时候走这个)
   if (self.status === PENDING) {
     self.onResolvedCallbacks.push(onFulfilled);
     self.onRejectedCallbacks.push(onRejected);
   }
-  console.log(self);
-  // 处理成功或者失败的回调
+  // 处理成功或者失败的回调(同步的时候走这个)
   if (self.status === FULFILLED) {
     let x = onFulfilled(self.value);
   }
   if (self.status === REJECTED) {
     let x = onRejected(self.value);
   }
-}
+};
 
 module.exports = Promise;
