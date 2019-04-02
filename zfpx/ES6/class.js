@@ -2,10 +2,10 @@
 function Constructor(x, y) {
   this.x = x;
   this.y = y;
-};
+}
 Constructor.prototype.toString = function() {
   return `x: ${this.x},y: ${this.y}`;
-}
+};
 let constructor = new Constructor("Robin", "Du");
 console.log(constructor.toString()); // x: Robin,y: Du
 
@@ -34,7 +34,7 @@ console.log(constructor1.__proto__ === constructor2.__proto__); // true
 // 4.1 添加原型上的方法
 Constructor1.prototype.printOOPS = function() {
   return "OOPS";
-}
+};
 console.log(constructor1.printOOPS()); // OOPS
 console.log(constructor2.printOOPS()); // OOPS
 
@@ -50,13 +50,13 @@ class Sup {
     if (val === this._tempt) return;
     this._tempt = val;
   }
-};
+}
 let sup = new Sup("1");
 sup.tempt = "123";
 console.log(sup.tempt); // 123
 
 // 6. 其他写法
-const Sup1 = class {}
+// const Sup1 = class {};
 
 // 7. 静态方法 => 使用：类名.方法名()
 class Sup2 {
