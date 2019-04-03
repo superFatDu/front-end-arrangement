@@ -1,0 +1,16 @@
+{
+  "name": "webpack_trainning",
+  "version": "1.0.0",
+  "description": "It's a trainning doc",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.0",
+    "webpack": "^4.29.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack --mode development"
+  },
+  "author": "superFatDu",
+  "license": "ISC"
+}

@@ -39,3 +39,28 @@ module.exports = {
   }
 }
 ```
+
+## 5.打包方式
+
+### 1. npx
+
+```js
+// npx可以直接运行node_modules/.bin目录下的命令
+
+$ npx webpack
+```
+
+### 2. package.json
+
+```js
+// 1. 生成package.json
+$ npm init => package.json
+
+// 2. 配置
+"scripts": {
+  "build": "webpack --mode development"
+}
+
+// 3. 打包
+$ npm run build
+```
