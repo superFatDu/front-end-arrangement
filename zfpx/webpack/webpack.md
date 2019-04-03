@@ -34,7 +34,7 @@ module.exports = {
 
   },
   plugins: [],
-  devSever: {
+  devSever: { // 配置服务器，预览打包后的文件
 
   }
 }
@@ -46,6 +46,7 @@ module.exports = {
 
 ```js
 // npx可以直接运行node_modules/.bin目录下的命令
+// 由于没有配置 --mode development，所以打包的输出文件很干净
 
 $ npx webpack
 ```
@@ -61,6 +62,102 @@ $ npm init => package.json
   "build": "webpack --mode development"
 }
 
-// 3. 打包
+// 3. 打包，由于配置了 --mode development，所以打包输出文件很多的注释
 $ npm run build
+```
+
+## 6. output
+
+```js
+Hash: 750993dc20af5979aa5f
+Version: webpack 4.29.6
+Time: 441ms
+Built at: 2019-04-03 12:20:34
+            Asset      Size  Chunks             Chunk Names
+bundle_webpack.js  23.5 KiB    main  [emitted]  main
+Entrypoint main = bundle_webpack.js
+[./node_modules/css-loader/dist/cjs.js!./src/index.css] 213 bytes {main} [built]
+[./src/index.css] 1.06 KiB {main} [built]
+[./src/index.js] 211 bytes {main} [built]
+    + 3 hidden modules
+```
+
+## 7. 配置webpack-server
+
+### 1. 安装依赖webpack-dev-serve
+
+```baxh
+// install
+$ npm install webpack-dev-server -D
+```
+
+### 2. webpack.config.js
+
+```js
+devServer: {
+  contentBase: "./dist", // 静态目录
+  host: "localhost",
+  port: 8080,
+  compress: true // 是否压缩
+}
+```
+
+### 3. webpack.json
+
+```js
+"scripts": {
+  "build": "webpack --mode development",
+  "dev": "webpack-dev-server --open --mode development"
+}
+```
+
+### 4. 启动
+
+```bash
+// start up
+$ npm run dev
+```
+
+## 8. 将打包输出文件添加到模板文件中
+
+### 1. 安装依赖 html-webpack-plugin
+
+```bash
+// install
+$ npm install html-webpack-plugin -D
+```
+
+### 2. 配置webpack.config.js
+
+```js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+plugins: [
+  new HtmlWebpackPlugin({
+    template: "./src/index.html",
+    filename: "index.html", // 路径是打包输出绝对路径下
+    title: "webpack",
+    hash: true, // 在资源后加上hash值，防止缓存
+    minify: {
+      removeAttributeQuotes: true // 压缩
+    }
+  })
+]
+```
+
+### 3. 重新打包后
+
+```js
+// webpack
+$ npm run build
+
+// ./dist目录下多出一个index.html文件
+<body>
+  <div class=app>
+    <span>This is a test page.</span>
+  </div>
+  <script type=text/javascript src=bundle_webpack.js?89e996844e15665a20f8></script>
+</body>
+
+// 运行服务器
+$ npm run dev
 ```

@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -6,10 +7,28 @@ module.exports = {
     filename: "bundle_webpack.js"
   },
   module: {
-
+    rules: [
+      {
+        test: /\.css$/, // 转换文件的正则匹配
+        loader: ["style-loader", "css-loader"] // style-loader: 把css文件变成style标签插入到head中/css-loader: 解析css文件中的url路径
+      }
+    ]
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html", // 模板文件
+      filename: "index.html", // 输出文件名，路径为上方的path
+      title: "webpack",
+      hash: true, // 在资源后加上hash值，防止缓存
+      minify: {
+        removeAttributeQuotes: true // 压缩
+      }
+    })
+  ],
   devServer: {
-
+    contentBase: "./dist",
+    host: "0.0.0.0",
+    port: 8080,
+    compress: true
   }
 }
