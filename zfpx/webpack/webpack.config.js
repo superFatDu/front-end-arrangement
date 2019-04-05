@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -15,10 +16,21 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg|bmp)/,
         loader: "file-loader" // file-loader解析图片地址，把图片从源位置拷贝到目标位置并修改原引用位置
+        // loader: {
+        //   loader: "file-loader",
+        //   options: {
+        //     outputPath: "images/" // 当想把图片都打包到一个包下面时使用
+        //   }
+        // }
+      },
+      {
+        test: /\.(html|htm)/,
+        loader: "html-withimg-loader"
       }
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(), // 每次打包前首先清空dist文件夹
     new HtmlWebpackPlugin({
       template: "./src/index.html", // 模板文件
       filename: "index.html", // 输出文件名，路径为上方的path
@@ -33,6 +45,7 @@ module.exports = {
     contentBase: "./dist",
     host: "0.0.0.0",
     port: 8080,
-    compress: true
+    compress: true, // 服务开启gzip压缩
+    open: true // 自动打开本地服务器
   }
 }

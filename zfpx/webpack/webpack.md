@@ -166,6 +166,13 @@ $ npm run dev
 
 ### 1. 为了方便调试，更换入口文件为main.js
 
+```js
+let src = require("./src/image/avator.jpg");
+let img = new Image();
+img.src = src;
+document.body.appendChild(img);
+```
+
 ### 2. 设置webpack.config.js
 
 ```js
@@ -179,5 +186,49 @@ module: {
     }
   ]
 }
+```
 
+### 3. 使用
+
+#### 3.1 直接打包插入
+
+```js
+let src = require("./src/image/avator.jpg");
+let img = new Image();
+img.src = src;
+document.body.appendChild(img);
+```
+
+#### 3.2 背景图片
+
+```css
+.avator {
+  width: 50px;
+  height: 50px;
+  background: url("./image/avator.jpg") no-repeat;
+  background-size: cover;
+}
+```
+
+#### 3.3 img标签插入
+
+##### 3.3.1 需要引入依赖html-withimg-loader
+
+```bash
+// install
+$ npm install html-withimg-loader -D
+```
+
+##### 3.3.2 配置webpack.config.js
+
+```js
+const HtmlWithImgLoader = require("html-withimg-loader");
+module: {
+  rules: [
+    {
+      test: /\.(html|htm)/,
+      loader: "html-withimg-loader"
+    }
+  ]
+}
 ```

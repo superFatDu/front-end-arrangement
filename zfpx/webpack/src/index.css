@@ -5,3 +5,9 @@
 body {
   color: rgb(107, 48, 48);
 }
+.avator {
+  width: 250px;
+  height: 250px;
+  background: url("./image/avator.jpg") 50% 50% no-repeat;
+  background-size: cover;
+}
