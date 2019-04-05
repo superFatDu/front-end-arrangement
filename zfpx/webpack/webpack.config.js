@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/main.js",
   output: {
     path: path.join(__dirname, "dist"), // 输出的文件夹只能是绝对路径
     filename: "bundle_webpack.js"
@@ -11,6 +11,10 @@ module.exports = {
       {
         test: /\.css$/, // 转换文件的正则匹配
         loader: ["style-loader", "css-loader"] // style-loader: 把css文件变成style标签插入到head中/css-loader: 解析css文件中的url路径
+      },
+      {
+        test: /\.(png|jpg|gif|svg|bmp)/,
+        loader: "file-loader" // file-loader解析图片地址，把图片从源位置拷贝到目标位置并修改原引用位置
       }
     ]
   },

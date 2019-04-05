@@ -161,3 +161,23 @@ $ npm run build
 // 运行服务器
 $ npm run dev
 ```
+
+## 9. 支持图片
+
+### 1. 为了方便调试，更换入口文件为main.js
+
+### 2. 设置webpack.config.js
+
+```js
+// 1. 图片需要loader
+module: {
+  rules: [
+    {
+      // file-loader解析图片地址，把图片从源位置拷贝到目标位置并修改原引用位置
+      test: /\.(png|jpg|gif|svg|bmp)/,
+      use: "file-loader"
+    }
+  ]
+}
+
+```
