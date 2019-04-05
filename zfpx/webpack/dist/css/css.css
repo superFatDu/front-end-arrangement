@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: rgb(107, 48, 48);
+}
+.avator {
+  width: 250px;
+  height: 250px;
+  background: url(eedbce4087928862b217d970905997d5.jpg) 50% 50% no-repeat;
+  background-size: cover;
+}
