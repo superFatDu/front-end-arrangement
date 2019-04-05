@@ -22,6 +22,12 @@ module.exports = {
         //     outputPath: "images/" // 当想把图片都打包到一个包下面时使用
         //   }
         // }
+        // loader: {
+        //   loader: "url-loader", // 可以在文件比较小的时候，直接变成base64字符串内嵌到页面中
+        //    options: {
+        //    limit: 5 *1024  
+        //   }
+        // }
       },
       {
         test: /\.(html|htm)/,
