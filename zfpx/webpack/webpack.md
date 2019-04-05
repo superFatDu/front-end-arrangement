@@ -232,3 +232,99 @@ module: {
   ]
 }
 ```
+
+## 10. less/sass支持
+
+### 10.1 创建less/sass文件
+
+```bash
+touch less.less
+touch sass.scss
+```
+
+### 10.2 安装依赖
+
+```bash
+// install
+npm install less less-loader node-sass sass-loader -D
+```
+
+### 10.3 配置webpack.config.js
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.less$/,
+      loader: ["style-loader", "css-loader", "less-loader"]
+    },
+     {
+      test: /\.scss$/,
+      loader: ["style-loader", "css-loader", "sass-loader"]
+    }
+  ]
+}
+```
+
+### 10.4 其他需求
+
+ 1. 有的时候希望把页面中的css文件单独来出来保存加载
+ 2. plugin: extract-text-webpack-plugin
+
+#### 10.4.1 安装依赖
+
+```bash
+// install
+$ npm install extract-text-webpack-plugin -D
+```
+
+#### 10.4.2 配置webpack.config.js
+
+```js
+// 新建各自的提取实例
+let cssExtract = new ExtractTextWebpackPlugin("css.css");
+let lessExtract = new ExtractTextWebpackPlugin("less.css");
+let sassExtract = new ExtractTextWebpackPlugin("sass.css");
+
+// 将实例放到plugin中
+plugin: [
+  cssExtract,
+  lessExtract,
+  sassExtract
+]
+
+// 修改module.rules
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      loader: cssExtract.extract({
+        use: ["css-loader"]
+      })
+    },
+    {
+      test: /\.less$/,
+      loader: cssExtract.extract({
+        use: ["css-loader", "less-loader"]
+      })
+    },
+    {
+      test: /\.scss$/,
+      loader: cssExtract.extract({
+        use: ["css-loader", "sass-loader"]
+      })
+    }
+  ]
+}
+```
+
+#### 10.4.3 坑
+
+1. DeprecationWarning: Tapable.plugin is deprecated. Use new API on `.hooks` instead => plugin不支持webpack4
+
+2. 解决方法
+
+```bash
+// install next version
+$ npm install extract-text-webpck-plugin@next
+```

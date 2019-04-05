@@ -5,3 +5,5 @@ img.src = src;
 document.body.appendChild(img);
 
 require("./index.css");
+require("./less.less");
+require("./sass.scss");

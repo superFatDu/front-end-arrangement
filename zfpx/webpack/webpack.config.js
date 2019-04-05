@@ -1,6 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+
+/**
+ * css 单独拉出来
+ * 使用plugin：ExtractTextWebpackPlugin
+ */
+let cssExtract = new ExtractTextWebpackPlugin("css/css.css");
+let lessExtract = new ExtractTextWebpackPlugin("css/less.css");
+let sassExtract = new ExtractTextWebpackPlugin("css/sass.css");
+
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -11,7 +21,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/, // 转换文件的正则匹配
-        loader: ["style-loader", "css-loader"] // style-loader: 把css文件变成style标签插入到head中/css-loader: 解析css文件中的url路径
+        // loader: ["style-loader", "css-loader"] // style-loader: 把css文件变成style标签插入到head中/css-loader: 解析css文件中的url路径
+        loader: cssExtract.extract({
+          use: ["css-loader"]
+        })
       },
       {
         test: /\.(png|jpg|gif|svg|bmp)/,
@@ -32,6 +45,21 @@ module.exports = {
       {
         test: /\.(html|htm)/,
         loader: "html-withimg-loader"
+      },
+      {
+        test: /\.less$/,
+        //loader: ["style-loader", "css-loader", "less-loader"]
+        loader: lessExtract.extract({
+          use: ["css-loader", "less-loader"]
+        })
+       
+      }, 
+      {
+        test: /\.scss$/,
+        //loader: ["style-loader", "css-loader", "sass-loader"]
+        loader: sassExtract.extract({
+          use: ["css-loader", "sass-loader"]
+        })
       }
     ]
   },
@@ -45,7 +73,10 @@ module.exports = {
       minify: {
         removeAttributeQuotes: true // 压缩
       }
-    })
+    }),
+    cssExtract,
+    lessExtract,
+    sassExtract
   ],
   devServer: {
     contentBase: "./dist",
