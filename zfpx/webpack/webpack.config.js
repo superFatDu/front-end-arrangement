@@ -23,7 +23,7 @@ module.exports = {
         test: /\.css$/, // 转换文件的正则匹配
         // loader: ["style-loader", "css-loader"] // style-loader: 把css文件变成style标签插入到head中/css-loader: 解析css文件中的url路径
         loader: cssExtract.extract({
-          use: ["css-loader"]
+          use: ["css-loader", "postcss-loader"]
         })
       },
       {
@@ -50,7 +50,7 @@ module.exports = {
         test: /\.less$/,
         //loader: ["style-loader", "css-loader", "less-loader"]
         loader: lessExtract.extract({
-          use: ["css-loader", "less-loader"]
+          use: ["css-loader", "less-loader", "postcss-loader"]
         })
        
       }, 
@@ -58,7 +58,7 @@ module.exports = {
         test: /\.scss$/,
         //loader: ["style-loader", "css-loader", "sass-loader"]
         loader: sassExtract.extract({
-          use: ["css-loader", "sass-loader"]
+          use: ["css-loader", "sass-loader", "postcss-loader"]
         })
       }
     ]

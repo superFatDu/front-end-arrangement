@@ -328,3 +328,49 @@ module: {
 // install next version
 $ npm install extract-text-webpck-plugin@next
 ```
+
+### 10.5 前缀
+
+```js
+Trident(IE) => -ms
+Gecko(Firefox) => -moz
+Presto(Opera) => -o
+Webkig(Chorome/Safari) => -webkit
+```
+
+#### 10.5.1 安装依赖
+
+1. postcss-loader
+2. autoprefixer
+
+```bash
+// install
+$ npm install postcss-loader autoprefixer -D
+```
+
+#### 10.5.2 新建postcss配置文件 =》 postcss.config.js
+
+```js
+module.expors = {
+  plugins: [
+    require("autoprefixer");
+  ]
+}
+```
+
+#### 10.5.3 配置webpack.config.js
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: {
+        loader: cssExtract.extract({
+          use: ["css-loader", "postcss-loader"]
+        })
+      }
+    }
+  ]
+}
+```
