@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/ES.js":
+/*!*******************!*\
+  !*** ./src/ES.js ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"superFatDu\");\n\n//# sourceURL=webpack:///./src/ES.js?");
+
+/***/ }),
+
 /***/ "./src/image/avator.jpg":
 /*!******************************!*\
   !*** ./src/image/avator.jpg ***!
@@ -123,10 +135,11 @@ eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./sr
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// 一下内容调试图片打包\r\nlet src = __webpack_require__(/*! ./image/avator.jpg */ \"./src/image/avator.jpg\");\r\nlet img = new Image();\r\nimg.src = src;\r\ndocument.body.appendChild(img);\r\n\r\n__webpack_require__(/*! ./index.css */ \"./src/index.css\");\r\n__webpack_require__(/*! ./less.less */ \"./src/less.less\");\r\n__webpack_require__(/*! ./sass.scss */ \"./src/sass.scss\");\n\n//# sourceURL=webpack:///./src/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ES_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ES.js */ \"./src/ES.js\");\n// 一下内容调试图片打包\r\nlet src = __webpack_require__(/*! ./image/avator.jpg */ \"./src/image/avator.jpg\");\r\nlet img = new Image();\r\nimg.src = src;\r\ndocument.body.appendChild(img);\r\n\r\n__webpack_require__(/*! ./index.css */ \"./src/index.css\");\r\n__webpack_require__(/*! ./less.less */ \"./src/less.less\");\r\n__webpack_require__(/*! ./sass.scss */ \"./src/sass.scss\");\r\n\r\n// 一下内容测试ES\r\n\r\nconsole.log('name :', _ES_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\nlet getName = () => _ES_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\nconsole.log(getName());\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ }),
 
