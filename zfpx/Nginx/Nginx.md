@@ -172,3 +172,27 @@ configure arguments: --prefix=/usr/local/nginx --user=www --group=www --with-htt
 | 全局 | worder_processes | 工作进程数，一般和CPU数量相同 |
 | 全局 | error_log | nginx的错误日志 |
 | 全局 | pid | nginx服务启动时的pid |
+
+## 7. 命令
+
+```js
+// 启动
+systemctl start nginx.service
+
+// 重启
+systemctl restart nginx.service
+nginx -s reload
+
+// 开机自启
+systemctl enable nginx.service
+
+// 停止开机自启
+systemctl disable nginx.service
+
+// 查看状态
+systemctl status nginx.service
+
+// 停止
+systemctl stop nginx.service
+nginx -s stop
+```
