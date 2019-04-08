@@ -126,3 +126,49 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 | 命令 | /usr/share/doc/nginx-1.14.2(?/COPYRIGHT) | nginx手册和帮助文档 |
 | 目录 | /var/cache/nginx | nginx的缓存目录 |
 | 目录 | /var/log/nginx | nginx的日志 |
+
+### 5.3 编译参数
+
+#### 5.3.1 安装目录和路径
+
+```js
+nginx version: nginx/1.14.0
+built by gcc 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC) 
+built with OpenSSL 1.0.2p  14 Aug 2018
+TLS SNI support enabled
+configure arguments: --prefix=/usr/local/nginx --user=www --group=www --with-http_stub_status_module --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-openssl=../openssl-1.0.2p --with-pcre=../pcre-8.42 --with-pcre-jit --with-ld-opt=-ljemalloc
+```
+
+#### 5.3.2 执行对应的模块时，nginx保留的临时性文件
+
+```js
+--http-client-body-temp-path=/var/cache/nginx/client_temp
+--http-proxy-temp-paty=/var/cache/nginx/proxy_temp
+--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp
+--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp
+--http-scgi-temp-path=/var/cache/nginx/scgi_temp
+```
+
+#### 5.3.3 设置nginx进程启动的用户和用户组
+
+```js
+--user=nginx
+--group=nginx
+```
+
+## 6. 配置文件
+
+- /etc/nginx/nginx.conf
+
+- /etc/nginx/conf.d/*.conf => /etc/nginx/conf.d/default.conf
+
+### 6.1 全局和服务配置
+
+![nginx.conf](./img/nginx_include.png)
+
+| 分类 | 配置项 | 用途 |
+| :------| ------: | :------: |
+| 全局 | user | 设置nginx服务的系统使用用户 |
+| 全局 | worder_processes | 工作进程数，一般和CPU数量相同 |
+| 全局 | error_log | nginx的错误日志 |
+| 全局 | pid | nginx服务启动时的pid |
