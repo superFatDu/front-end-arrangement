@@ -133,7 +133,7 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 
 ```js
 nginx version: nginx/1.14.0
-built by gcc 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC) 
+built by gcc 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC)
 built with OpenSSL 1.0.2p  14 Aug 2018
 TLS SNI support enabled
 configure arguments: --prefix=/usr/local/nginx --user=www --group=www --with-http_stub_status_module --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-openssl=../openssl-1.0.2p --with-pcre=../pcre-8.42 --with-pcre-jit --with-ld-opt=-ljemalloc
@@ -195,4 +195,5 @@ systemctl status nginx.service
 // 停止
 systemctl stop nginx.service
 nginx -s stop
+nginx -s quit
 ```
