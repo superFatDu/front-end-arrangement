@@ -25,3 +25,26 @@ location ^/api {
   proxy pass "xxx.xxx.xxx"
 }
 ```
+
+## 2.4 例子
+
+```js
+server {
+  listen 0.0.0.0:8080;
+  listen [::]:8080;
+  
+  server_name xxx.com
+  index index.html
+  
+  location /subURL {
+    # 别名文件目录
+    alias /var/www/****;
+    try_files $uri/ /subURL/index.html;
+  }
+  
+  location /api/ {
+    proxy_set_header Host $host;
+    proxy_pass http://xxxx.com;
+  }
+}
+```
