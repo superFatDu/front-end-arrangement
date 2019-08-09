@@ -86,71 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/ES.js":
-/*!*******************!*\
-  !*** ./src/ES.js ***!
-  \*******************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"superFatDu\");\n\n//# sourceURL=webpack:///./src/ES.js?");
-
-/***/ }),
-
-/***/ "./src/image/avator.jpg":
-/*!******************************!*\
-  !*** ./src/image/avator.jpg ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"eedbce4087928862b217d970905997d5.jpg\";\n\n//# sourceURL=webpack:///./src/image/avator.jpg?");
-
-/***/ }),
-
-/***/ "./src/index.css":
-/*!***********************!*\
-  !*** ./src/index.css ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/index.css?");
-
-/***/ }),
-
-/***/ "./src/less.less":
-/*!***********************!*\
-  !*** ./src/less.less ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/less.less?");
-
-/***/ }),
-
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ES_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ES.js */ \"./src/ES.js\");\n// 一下内容调试图片打包\r\nlet src = __webpack_require__(/*! ./image/avator.jpg */ \"./src/image/avator.jpg\");\r\nlet img = new Image();\r\nimg.src = src;\r\ndocument.body.appendChild(img);\r\n\r\n__webpack_require__(/*! ./index.css */ \"./src/index.css\");\r\n__webpack_require__(/*! ./less.less */ \"./src/less.less\");\r\n__webpack_require__(/*! ./sass.scss */ \"./src/sass.scss\");\r\n\r\n// 一下内容测试ES\r\n\r\nconsole.log('name :', _ES_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\nlet getName = () => _ES_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\nconsole.log(getName());\n\n//# sourceURL=webpack:///./src/main.js?");
-
-/***/ }),
-
-/***/ "./src/sass.scss":
-/*!***********************!*\
-  !*** ./src/sass.scss ***!
-  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/sass.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: [BABEL] C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\src\\\\main.js: \\nAs of v7.0.0-beta.55, we've removed Babel's Stage presets.\\nPlease consider reading our blog post on this decision at\\nhttps://babeljs.io/blog/2018/07/27/removing-babels-stage-presets\\nfor more details. TL;DR is that it's more beneficial in the\\n  long run to explicitly add which proposals to use.\\n\\nFor a more automatic migration, we have updated babel-upgrade,\\nhttps://github.com/babel/babel-upgrade to do this for you with\\n\\\"npx babel-upgrade\\\".\\n\\nIf you want the same configuration as before:\\n\\n{\\n  \\\"plugins\\\": [\\n    // Stage 0\\n    \\\"@babel/plugin-proposal-function-bind\\\",\\n\\n    // Stage 1\\n    \\\"@babel/plugin-proposal-export-default-from\\\",\\n    \\\"@babel/plugin-proposal-logical-assignment-operators\\\",\\n    [\\\"@babel/plugin-proposal-optional-chaining\\\", { \\\"loose\\\": false }],\\n    [\\\"@babel/plugin-proposal-pipeline-operator\\\", { \\\"proposal\\\": \\\"minimal\\\" }],\\n    [\\\"@babel/plugin-proposal-nullish-coalescing-operator\\\", { \\\"loose\\\": false }],\\n    \\\"@babel/plugin-proposal-do-expressions\\\",\\n\\n    // Stage 2\\n    [\\\"@babel/plugin-proposal-decorators\\\", { \\\"legacy\\\": true }],\\n    \\\"@babel/plugin-proposal-function-sent\\\",\\n    \\\"@babel/plugin-proposal-export-namespace-from\\\",\\n    \\\"@babel/plugin-proposal-numeric-separator\\\",\\n    \\\"@babel/plugin-proposal-throw-expressions\\\",\\n\\n    // Stage 3\\n    \\\"@babel/plugin-syntax-dynamic-import\\\",\\n    \\\"@babel/plugin-syntax-import-meta\\\",\\n    [\\\"@babel/plugin-proposal-class-properties\\\", { \\\"loose\\\": false }],\\n    \\\"@babel/plugin-proposal-json-strings\\\"\\n  ]\\n}\\n\\nIf you're using the same configuration across many separate projects,\\nkeep in mind that you can also create your own custom presets with\\nwhichever plugins and presets you're looking to use.\\n\\nmodule.exports = function() {\\n  return {\\n    plugins: [\\n      require(\\\"@babel/plugin-syntax-dynamic-import\\\"),\\n      [require(\\\"@babel/plugin-proposal-decorators\\\"), { \\\"legacy\\\": true }],\\n      [require(\\\"@babel/plugin-proposal-class-properties\\\"), { \\\"loose\\\": false }],\\n    ],\\n    presets: [\\n      // ...\\n    ],\\n  };\\n};\\n   (While processing: \\\"C:\\\\\\\\PersonalDoc\\\\\\\\Project\\\\\\\\front-end-arrangement\\\\\\\\zfpx\\\\\\\\webpack\\\\\\\\node_modules\\\\\\\\@babel\\\\\\\\preset-stage-0\\\\\\\\lib\\\\\\\\index.js\\\")\\n    at _default (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\preset-stage-0\\\\lib\\\\index.js:9:9)\\n    at loadDescriptor (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\full.js:165:14)\\n    at cachedFunction (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\caching.js:33:19)\\n    at loadPresetDescriptor (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\full.js:235:63)\\n    at config.presets.reduce (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\full.js:77:21)\\n    at Array.reduce (<anonymous>)\\n    at recurseDescriptors (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\full.js:74:38)\\n    at loadFullConfig (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\config\\\\full.js:108:6)\\n    at process.nextTick (C:\\\\PersonalDoc\\\\Project\\\\front-end-arrangement\\\\zfpx\\\\webpack\\\\node_modules\\\\@babel\\\\core\\\\lib\\\\transform.js:28:33)\\n    at process._tickCallback (internal/process/next_tick.js:61:11)\");\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 

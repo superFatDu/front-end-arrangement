@@ -9,7 +9,7 @@ require("./less.less");
 require("./sass.scss");
 
 // 一下内容测试ES
-import name from "./ES.js";
-console.log('name :', name);
-let getName = () => name;
-console.log(getName());
+// import name from "./ES.js";
+// console.log('name :', name);
+// let getName = () => name;
+// console.log(getName());
