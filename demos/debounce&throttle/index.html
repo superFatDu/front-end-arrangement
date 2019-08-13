@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body {
+    width: 100%;
+    height: 5000px;
+  }
+  </style>
+</head>
+<body>
+  <script>
+  function throttle(fn, delay) {
+    let flag = true;
+    return (...args) => {
+      if (!flag) return;
+      flag = false;
+      setTimeout(() => {
+        fn.apply(this, args);
+        flag = true;
+      }, delay);
+    }
+  }
+  function debounce(fn, delay) {
+    let timer = null;
+    return (...args) => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+      }, delay)
+    }
+  }
+  function testFn() {
+    console.log(window.screenTop);
+  }
+  window.onscroll = debounce(testFn, 1000);
+  </script>
+</body>
+</html>
