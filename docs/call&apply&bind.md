@@ -84,20 +84,20 @@ Function.prototype.myCall = function(funcCtx) {
 ```js
 /* 思路同call */
 Function.prototype.myApply = function(funcCtx) {
-  if(typeof this != 'function') {
-      throw new TypeError('Erorr')
-  }
-  let ctx = funcCtx || global
+    if(typeof this != 'function') {
+        throw new TypeError('Erorr')
+    }
+    let ctx = funcCtx || global
 
-  ctx.fn = this
-  let result
-  if(arguments[1]) {
-      result = ctx.fn(...arguments[1])
-  } else {
-      result = ctx.fn()
-  }
-  delete ctx.fn
-  return result
+    ctx.fn = this
+    let result
+    if(arguments[1]) {
+        result = ctx.fn(...arguments[1])
+    } else {
+        result = ctx.fn()
+    }
+    delete ctx.fn
+    return result
 }
 ```
 
@@ -111,6 +111,7 @@ Function.prototype.myApply = function(funcCtx) {
  */
 Function.prototype.myBind = function(funcCtx) {
   let ctx = funcCtx || global
+  console.log(this)
   let _this = this
   let args = [...arguments].slice(1)
   // 作为构造函数使用
