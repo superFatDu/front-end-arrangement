@@ -10,7 +10,7 @@
 监听页面的scroll事件，在scroll的callback中判断懒加载的图片是否进入可视区域，如果是，
 则将data-original中的值取出set到src中。
 ##### 3. 实现
-```
+```html
 // html
 <div class="lazy-load">
     <img src="" data-original="./xxx.jpg" lazyload="true" />
@@ -22,7 +22,7 @@
     img * n
 </div>
 ```
-```
+```js
 // script
 let viewHeight = document.documentElement.clientHeight;  // 当前设备的屏高
 function lazyLoad() {
