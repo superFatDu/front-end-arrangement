@@ -3,6 +3,6 @@ Arranged files from daily review.
 
 ### Author
 ```
-ID: superFatDu
+author: superFatDu
 email: suerperduchengwu@163.com
 ```

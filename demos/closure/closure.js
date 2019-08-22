@@ -2,7 +2,7 @@ function scoped() {
   let num  = 1;
   function add() {
     num ++;
-  };
+  }
   function log() {
     console.log(num);
   }

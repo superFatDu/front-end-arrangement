@@ -65,8 +65,9 @@ module.exports = {
         test: /\.js/,
         use: {
           loader: "babel-loader",
+          //presets: ["@babel/preset-env", "@babel/preset-stage-0", "@bable/preset-react"]
           query: {
-            presets: ["env", "stage-0", "react"]
+            presets: ["@babel/preset-env", "@babel/preset-stage-0", "@babel/preset-react"]
           }
         }
       }
