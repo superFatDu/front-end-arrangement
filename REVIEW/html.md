@@ -38,5 +38,7 @@ cookie/session/localStorage/sessionStorage/indexedDB
 
 1. cookie: html5标准前主要本地储存方式，优点是兼容性好，请求头自带cookie方便。但是cookie很小（4k），自动请求头加cookie浪费流量等。
 2. session: session会话机制是一种服务器端机制.
-3. indexedDB: 是被正式纳入HTML5标准的数据库储存方案，它是NoSQL数据库，用键值对进行储存，可以进行快速读取操作，非常适合web场景，同时用JavaScript进行操作会非常方便。
+3. localStorage: 本地持久化存储。
+4. sessionStorage: 本地会话性存储。
+5. indexedDB: 是被正式纳入HTML5标准的数据库储存方案，它是NoSQL数据库，用键值对进行储存，可以进行快速读取操作，非常适合web场景，同时用JavaScript进行操作会非常方便。
 ```
