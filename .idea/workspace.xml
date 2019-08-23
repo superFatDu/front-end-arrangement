@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f98ac4-6332-45de-bfb0-6201dd7cae97" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/demos/MVVM/publishSubscribe.js" beforeDir="false" afterPath="$PROJECT_DIR$/demos/MVVM/publishSubscribe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demos/closure/closure.js" beforeDir="false" afterPath="$PROJECT_DIR$/demos/closure/closure.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zfpx/webpack/dist/bundle_webpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/zfpx/webpack/dist/bundle_webpack.js" afterDir="false" />
@@ -13,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/zfpx/webpack/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/zfpx/webpack/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zfpx/webpack/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/zfpx/webpack/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zfpx/webpack/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/zfpx/webpack/webpack.config.js" afterDir="false" />
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,6 +29,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+=======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demos/MVVM/viewAndData.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -165,24 +171,21 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/aboutReact.md">
+        <entry file="file://$PROJECT_DIR$/docs/面试题.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="304">
-                <caret line="395" selection-end-line="405" selection-end-column="32" />
-                <folding>
-                  <element signature="e#0#26#0" expanded="true" />
-                  <element signature="e#0#41#0" expanded="true" />
-                  <element signature="e#0#39#0" expanded="true" />
-                  <element signature="e#0#50#0" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="345">
+                <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/Network IO Model.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -194,6 +197,7 @@
         </entry>
       </file>
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -238,7 +242,13 @@
 =======
         <option value="$PROJECT_DIR$/zfpx/Nginx/Nginx.md" />
         <option value="$PROJECT_DIR$/docs/aboutReact.md" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/docs/Here is localStorage,why using vux.md" />
+        <option value="$PROJECT_DIR$/docs/Here is localStorage,why using Vuex.md" />
+        <option value="$PROJECT_DIR$/docs/面试题.md" />
+=======
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
       </list>
     </option>
   </component>
@@ -297,7 +307,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../React_Notes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bikemanagement" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -376,7 +386,12 @@
       <workItem from="1554724035202" duration="221000" />
       <workItem from="1554896903540" duration="104000" />
       <workItem from="1555504956941" duration="7164000" />
+<<<<<<< HEAD
+      <workItem from="1557320848944" duration="3186000" />
+      <workItem from="1557578764683" duration="622000" />
+=======
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
     </task>
     <task id="LOCAL-00001" summary="add base chat-input-box demo.">
       <created>1551710928390</created>
@@ -483,15 +498,26 @@
       <option name="project" value="LOCAL" />
       <updated>1555511165399</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Vuex and localStorage/sessionStorage.">
+      <created>1557322542452</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1557322542452</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="45637000" />
+=======
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="37065000" />
 =======
     <option name="totallyTimeSpent" value="41829000" />
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -508,11 +534,16 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
 <<<<<<< HEAD
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.26789588" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.329718" />
+=======
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.26868907" />
 =======
       <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.26789588" />
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -535,7 +566,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/superFatDu/front-end-arrangement&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="base commit." />
     <MESSAGE value="add react.md file." />
-    <option name="LAST_COMMIT_MESSAGE" value="add react.md file." />
+    <MESSAGE value="Vuex and localStorage/sessionStorage." />
+    <option name="LAST_COMMIT_MESSAGE" value="Vuex and localStorage/sessionStorage." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md" />
@@ -645,6 +677,8 @@
     <entry file="file://$PROJECT_DIR$/zfpx/webpack/webpack_ES.md">
 =======
     <entry file="file://$PROJECT_DIR$/zfpx/Nginx/Nginx.md" />
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/zfpx/webpack/webpack.md">
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -675,6 +709,7 @@
               <element signature="n#!!doc" expanded="true" />
               <element signature="n#!!doc" expanded="true" />
 =======
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
     <entry file="file://$PROJECT_DIR$/zfpx/Nginx/img/nginx_include.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -692,13 +727,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/aboutReact.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1546">
+            <caret line="395" selection-end-line="405" selection-end-column="32" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zfpx/ES6/Proxy.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/zfpx/ES6/destructure.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        <state relative-caret-position="161">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -715,8 +760,8 @@
     <entry file="file://$PROJECT_DIR$/zfpx/Nginx/Nginx_source.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1797">
-            <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+          <first_editor relative-caret-position="578">
+            <caret line="152" selection-start-line="152" selection-end-line="152" />
           </first_editor>
           <second_editor />
         </state>
@@ -726,15 +771,47 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="577">
-            <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/aboutReact.md">
+    <entry file="file://$PROJECT_DIR$/zfpx/ES6/Set&amp;Map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zfpx/webpack/src/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zfpx/webpack/webpack.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
+<<<<<<< HEAD
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Here is localStorage,why using Vuex.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="253">
+            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/面试题.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="345">
+            <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+=======
           <first_editor relative-caret-position="304">
             <caret line="395" selection-end-line="405" selection-end-column="32" />
             <folding>
@@ -744,6 +821,7 @@
               <element signature="e#0#50#0" expanded="true" />
 >>>>>>> 409178e5ae9abe69dd0d1d8976db227711609a97
             </folding>
+>>>>>>> f245e9e87aab7519f456209b60f91eeb8874ea3b
           </first_editor>
           <second_editor />
         </state>

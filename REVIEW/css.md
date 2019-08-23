@@ -169,7 +169,7 @@ element-height = margin-top + height + margin-bottom
 ```js
 box-sizing: content-box; // 标准盒模型
 box-sizing: border-box; // 怪异盒模型
-box-sizing: padding-box; // 火狐私有模型，无人使用
+box-sizing: padding-box; // 火狐私有模型，基本无人使用
 ```
 
 ## 1.6 flex
