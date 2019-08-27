@@ -93,3 +93,42 @@ person.setName("cHeNg5");
 console.log(person.getName()); // cHeNg5
 console.log(name); // name is not defined,私有变量外部无法访问
 ```
+
+## 1.3 JavaScript的作用域链
+
+> JavaScript属于静态作用域，即声明的作用域是根据程序正文在编译时就确定的，有时也称为词法作用域。
+
+![scopeContext](./img/scopeContext.png)
+
+- 其本质是JavaScript在执行过程中会创造可执行上下文，可执行上下文中的词法环境中含有外部词法环境的引用，我们可以通过这个引用获取外部词法环境的变量、声明等，这些引用串联起来一直指向全局的词法环境，因此形成了作用域链。
+
+```js
+let obj = { // Global Exection Context
+  let 0bj1 = 1;
+  subContext: function() { // ExectionContext1
+    let _this = this;
+    let obj2 = 2;
+    return function() { // ExectionContext2
+      return _this.subObj1 + obj2;
+    }
+  }
+}
+
+// ExectionContext2引用了ExectionContext1和GlobalExectionContext的变量。所以ExectionContext2 -> ExectionContext2 -> GlobalExectionContext组成了一条作用域链。
+```
+
+## 1.4 判断是否是数组
+
+```js
+// ES6
+if（Array.isArray(value)）{
+    return true;
+}
+
+// 兼容性处理
+if（!Array.isArray）{
+  Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === "[object Array]";
+  }
+}
+```
