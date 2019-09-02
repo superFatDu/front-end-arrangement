@@ -69,5 +69,6 @@ console.log(obj.a); // 2
 
 // objCopy始新开辟的内存空间，他的指针不指向obj的指针地址。
 ```
+![深复制](./img/deepClone.jpg)
 
 ### 2.2.3 实现
