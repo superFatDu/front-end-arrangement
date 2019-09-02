@@ -147,11 +147,11 @@ const c = new foo() // foo()
 function a() {
   return () => {
     return () => {
-      console.log(this)
+      console.log(this);
     }
   }
 }
-console.log(a()()())  // Window
+console.log(a()()());  // Window
 ```
 
 ```js
