@@ -72,3 +72,46 @@ console.log(obj.a); // 2
 ![深复制](./img/deepClone.jpg)
 
 ### 2.2.3 实现
+
+#### 2.2.3.1 浅拷贝实现
+
+```js
+function shallowCopy(obj) {
+  let shallowObj = {};
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) shallowObj[key] = obj[key];
+  }
+  return shallowObj;
+}
+```
+
+#### 2.2.3.2 深拷贝实现
+
+```js
+// 如果没有特殊的数据解构
+JSON.parse(JSON.stringify(obj));
+
+// 缺点：
+// 1. 会忽略undefined
+// 2. 会忽略symbol
+// 3. 不能序列化函数
+// 4. 不能解决循环引用的对象
+
+let a = {
+  age: undefined,
+  sex: Symbol("male"),
+  jobs: function() {},
+  name: "cHeNg5"
+}
+let b = JSON.parse(JSON.stringify(a))
+console.log(b) // {name: "cHeNg5"} => 引发上述问题
+```
+
+```js
+// 自己实现气来还是很困难的，有很多的边界需要处理,推荐：
+Lodash.js
+
+let deepObj = [{"a": 1}, {"b": 2}];
+let deepCopy = _.cloneDeep(deepObj);
+console.log(deepObj[0] === deepCopy[0]); // false
+```
