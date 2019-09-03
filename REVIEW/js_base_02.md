@@ -113,5 +113,55 @@ Lodash.js
 
 let deepObj = [{"a": 1}, {"b": 2}];
 let deepCopy = _.cloneDeep(deepObj);
-console.log(deepObj[0] === deepCopy[0]); // false
+console.log(deepObj[0] === deepCopy[0]); // false => 深拷贝
 ```
+
+## 2.3 原型
+
+### 2.3.1 普通对象和函数对象
+
+> 通过new Function()创建的对象都是函数对象，其他的额就是普通对象。
+
+```js
+let f1 = new Function();
+let f2 = function() {};
+function f3() {};
+
+let o1 = {};
+let o2 = new Object();
+let o3 = new f3();
+
+console.log(typeof f1/f2/f3); // function
+console.log(typeof o1/o2/o3); // object
+```
+
+### 2.3.2 原型
+
+![proto](./img/proto.png)
+
+```js
+function Person() {}
+
+let person = new Person();
+```
+
+- 虽然不推荐直接使用，每个对象都有__proto__属性，他指向原型对象。
+
+- person.\__proto__ —> Person.prototype
+
+> 原型其实也是一个对象，它包含了很多的函数。所以我们可以通过__proto__找到一个原型对象。
+
+**原型链通过__proto__链接**
+
+- 一个原型对象的constructor属性指向构造函数。Person.prototype.constructor = Person。
+
+![prototyp](./img/prototype.png)
+
+### 2.3.3 总结
+
+1. Object 是所有对象的爸爸，所有对象都可以通过 \__proto__ 找到它
+2. Function 是所有函数的爸爸，所有函数都可以通过 \__proto__ 找到它
+3. 函数的 prototype 是一个对象
+4. 对象的 \__proto__ 属性指向原型， \__proto__ 将对象和原型连接起来组成了原型链
+
+## 2.4 Proxy
