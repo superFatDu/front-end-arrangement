@@ -165,3 +165,7 @@ let person = new Person();
 4. 对象的 \__proto__ 属性指向原型， \__proto__ 将对象和原型连接起来组成了原型链
 
 ## 2.4 Proxy
+
+[Proxy梯子](https://github.com/superFatDu/front-end-arrangement/blob/master/zfpx/ES6/Proxy.js)
+
+### 2.4.1 Reflect
