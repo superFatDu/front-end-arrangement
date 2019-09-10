@@ -30,3 +30,18 @@ let a = {
 let b = JSON.parse(JSON.stringify(a))
 console.log(b)
 
+
+
+function addCalculator() {
+  let a = 1;
+  return function() {
+    a += 1;
+    return a;
+  }
+}
+
+let add = addCalculator();
+console.log(add());
+console.log(add());
+console.log(add());
+

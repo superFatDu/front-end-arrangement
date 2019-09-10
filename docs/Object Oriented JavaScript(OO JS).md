@@ -118,6 +118,6 @@ class  rewriteSon extends rewrite{
 }
 
 var newRewriteSon = new rewriteSon()
-newRewriteSon.go()
-newRewriteSon.sport()
+newRewriteSon.go() // 我回家了
+newRewriteSon.sport() // 我在运动
 ```
