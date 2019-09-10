@@ -164,4 +164,102 @@ let person = new Person();
 3. 函数的 prototype 是一个对象
 4. 对象的 \__proto__ 属性指向原型， \__proto__ 将对象和原型连接起来组成了原型链
 
-## 2.4 Proxy
+## 2.4 Object.defineProperty()与Proxy
+
+> Object.defineProperty与ES2015新增的Proxy对象，都会被用来做数据劫持。
+
+- 数据劫持：在访问或者修改对象某个属性时，通过一段代码拦截找个行为，进行额外的操作或者修改返回结果。
+
+### 2.4.1 Object.defineProperty()
+
+> Object.defineProperty()方法直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回这个对象。
+
+```js
+Object.defineProperty(obj, prop, descriptor)
+
+params:
+1. obj => 要在其上定义属性的对象
+2. prop => 要定义或者修改属性的名称
+3. descriptor => 将被定义或者修改属性描述符。
+
+return:
+被传递给函数的对象。
+
+一般通过为对象的属性赋值的情况下，对象的属性可以修改也可以删除，但是通过Object.defineProperty()定义属性，通过描述符的设置可以进行更精准的控制对象属性。
+```
+
+![descriptor](./img/descriptor.webp)
+
+#### 2.4.1.1 descriptor描述符
+
+##### 2.4.1.1.1 数据描述符（value/writable)
+
+```js
+let Person = {};
+// 1.默认方式
+Object.defineProperty(Person, "name", {
+  value: "Robin"
+});
+Person.name = "cHeNg5";
+console.log(Person.name); // Robin =》 writable默认是false,不能改变属性的值。
+
+// 2. 可重写
+Object.defineProperty(Person, "name", {
+  value: "Robin",
+  writable: true
+});
+Person.name = "cHeNg5";
+console.log(Person.name); // cHeNg5
+```
+
+##### 2.4.1.1.2 存取描述符（getter/setter）
+
+```js
+let Person = {};
+let tempt = null;
+Object.defineProperty(Person, "name", {
+  get: function() {
+    return tempt;
+  },
+  set: function(val) {
+    tempt = val;
+  }
+});
+Person.name = "Robin"; // set操作
+console.log(Person.name); // get操作
+```
+
+##### 2.4.1.1.3 数据描述符和存取描述符都具有的描述符
+
+1. configurable：描述属性是否可配置，可删除。
+2. enumerable：描述属性是否可出现在for-in或者Object.keys()的遍历中。
+
+```js
+// 不可删除
+let Person = {};
+Object.defineProperty(Person, "name", {
+  value: "Robin",
+  configurable: false
+});
+delete Person.name; // Error: Cannot delete property "name" of #<Object>
+
+// 不可redefine
+Object.defineProperty(Person, "name", {
+  value: "cHeNg5"
+}); // Error: Cannot redefine property: name
+
+// 当同时设置writable时
+let Name = {};
+Object.defineProperty(Name, "name", {
+  value: "cHeNg5",
+  configurable: false,
+  writable: true
+});
+Object.defineProperty(Name, "name", {
+  value: "Robin"
+}); // 由于writable的原因，redefine不会报错
+Name.name = "superFatDu";
+console.log(Name.name); // superFatDu
+```
+
+1. configurable: false 时，不能删除当前属性，且不能重新配置当前属性的描述符(有一个小小的意外：可以把writable的状态由true改为false,但是无法由false改为true),但是在writable: true的情况下，可以改变value的值
