@@ -44,4 +44,33 @@ let add = addCalculator();
 console.log(add());
 console.log(add());
 console.log(add());
+console.log("------------------------------------------------");
+let obj = {
+  _id: undefined,
+  set id(value) {
+    this._id = value;
+  },
+  get id() {
+    return this._id;
+  }
+};
+obj.id = 5;
+console.log(obj.id);
+
+console.log("------------------------------------------------");
+
+let proxy = new Proxy({}, {
+  get: function(target, propertyKey, receiver) {
+    console.log(`getting ${propertyKey}`);
+    return Reflect.get(target, propertyKey, receiver);
+  },
+  set: function(target, propertyKey, value, receiver) {
+    console.log(`setting ${propertyKey}`);
+    return Reflect.set(target, propertyKey, value, receiver);
+  }
+});
+proxy.name = "cHeNg5";
+proxy.name;
+console.log(proxy);
+
 

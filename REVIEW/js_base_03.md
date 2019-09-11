@@ -232,4 +232,53 @@ import { m as mm } from "export.js";
 console.log(mm);
 ```
 
+### 1.2.4 webpack与ES Module
+
+```js
+// a.js
+export default function() {
+  console.log("Module A");
+}
+
+// index.js
+import A from "./a.js";
+A();
+
+// index.html
+<html>
+  <head></head>
+  <body>
+    <script type="text/javascript" src="./index.js"></script>
+  </body>
+</html>
+
+// 运行时
+Uncaught SyntaxError: Unexpected token import
+```
+
+> 原因是：目前我们的前端开发，浏览器还不支持模块化，想要实现模块化功能，需要借助webpack等构建化工具。
+
+```js
+// webpack配置
+let path = require("path");
+module.export = {
+  entry: "./src/index.js",
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "main.js"
+  }
+}
+
+// index.html
+<html>
+  <head></head>
+  <body>
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>
+
+// 运行时
+Module A
+```
+
 [模块化梯子](https://blog.csdn.net/iiichigo/article/details/82937768)

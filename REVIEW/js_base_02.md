@@ -264,13 +264,59 @@ console.log(Name.name); // superFatDu
 
 1. configurable: false 时，不能删除当前属性，且不能重新配置当前属性的描述符(有一个小小的意外：可以把writable的状态由true改为false,但是无法由false改为true),但是在writable: true的情况下，可以改变value的值
 
-### 2.4.2 Proxy
+### 2.4.1 Proxy
+
+> Proxy意为代理器，通过操作为对象生成的代理器，实现对对象各类操作的拦截。
+
+```js
+let proxy = new Proxy(obj, handler);
+1. proxy是代理的实例。
+2. Proxy是生成代理器的构造函数。
+3. obj是需要被代理的对象。
+4. handler是拦截的具体行为操作
+```
+
+```js
+let proxy = new Proxy({}, {
+  get: function(target, propertyKey, receiver) {
+    console.log(`getting ${propertyKey}`);
+    return Reflect.get(target, propertyKey, receiver);
+  },
+  set: function(target, propertyKey, value, receiver) {
+    console.log(`getting ${propertyKey}`);
+    return Reflect.set(target, propertyKey, value, receiver);
+  }
+});
+
+proxy.name = "cHeNg5"; // setting name
+proxy.name; // getting name
+```
+#### 2.4.1.1 代理类别
+
+[Proxy类别MDN手册](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
 [Proxy梯子](https://github.com/superFatDu/front-end-arrangement/blob/master/zfpx/ES6/Proxy.js)
 
-[proxy&reflect](https://segmentfault.com/a/1190000015581013)
+### 2.4.2 Reflect
 
-### 2.4.1 Reflect
+> Reflect是一个包揽更为严格/健全的操作对象方法的模块。最终目的是成为语言内部方法的宿主对象，提供替代命令式操作的相应函数。
+
+1. 使用Reflect.has(target, attr)替代in操作。
+2. 使用Reflect.deleteProperty(target, attr)替代delete操作。
+3. ……
+
+> 是函数更加的完善和严格。比如当无法定义属性时，Reflect.defineProperty返回false而不是抛出错误。同时与Proxy可拦截的方法对应，方便在实现自定义行为时，直接调用以完成默认行为。
+
+#### 2.4.2.1 静态方法
+
+1. Reflect.get(obj, attr, receiver)
+2. Reflect.set(obj, attr, value, receiver)
+3. Reflect.has(obj, attr) === attr in obj
+4. Reflect.deleteProperty(obj, attr) === delete obj[attr]
+5. Reflect.construct(func, args) === new func(...args)
+6. Reflect.getPrototypeOf(obj) === Object.getPrototypeOf(obj)
+7. Reflect.setPrototypeOf(obj)
+8. 其他参考手册：[Reflect手册](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 
 ## 2.5 map&filer&reduce
 
