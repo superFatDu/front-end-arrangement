@@ -271,3 +271,35 @@ console.log(Name.name); // superFatDu
 [proxy&reflect](https://segmentfault.com/a/1190000015581013)
 
 ### 2.4.1 Reflect
+
+## 2.5 map&filer&reduce
+
+### 2.5.1 map
+
+```js
+let arr = [1, 2, 3];
+let temptArr = arr.map(item => {
+  return item + 1
+});
+console.log(temptArr); // [2, 3, 4]
+```
+
+### 2.5.2 filter
+
+```js
+let arr = [1, 3, 4, 4, 5];
+let temptArr = arr.filter(item => {
+  return item !== 4;
+})
+console.log(temptArr); // [1, 3, 5]
+```
+
+### 2.5.3 reduce
+
+```js
+let arr = [{price: 1}, {price: 2}, {price: 3}];
+let sumArr = arr.reduce((prev, next) => {
+  return Number(prev.price) + Number(next.price);
+}, 0)
+console.log(sumArr); // 6
+```
