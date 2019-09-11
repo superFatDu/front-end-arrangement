@@ -299,7 +299,7 @@ console.log(temptArr); // [1, 3, 5]
 ```js
 let arr = [{price: 1}, {price: 2}, {price: 3}];
 let sumArr = arr.reduce((prev, next) => {
-  return Number(prev.price) + Number(next.price);
+  return prev + next.price;
 }, 0)
 console.log(sumArr); // 6
 ```
