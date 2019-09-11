@@ -263,3 +263,9 @@ console.log(Name.name); // superFatDu
 ```
 
 1. configurable: false 时，不能删除当前属性，且不能重新配置当前属性的描述符(有一个小小的意外：可以把writable的状态由true改为false,但是无法由false改为true),但是在writable: true的情况下，可以改变value的值
+
+## 2.4 Proxy
+
+[Proxy梯子](https://github.com/superFatDu/front-end-arrangement/blob/master/zfpx/ES6/Proxy.js)
+
+### 2.4.1 Reflect
