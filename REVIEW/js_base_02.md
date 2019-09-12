@@ -318,6 +318,48 @@ proxy.name; // getting name
 7. Reflect.setPrototypeOf(obj)
 8. 其他参考手册：[Reflect手册](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 
+### 2.4.3 实现简易观察者模式
+
+```js
+// 1.初始化观察者队列
+let arr = new Set();
+
+// 2.监听并加入队列
+let watcher = fun => {
+  arr.add(fun);
+}
+
+// 3. 配置handler
+let handler = {
+  set: function(target, propertyKey, value, receiver) {
+    // 内部调用对应的Reflect方法
+    const result = Reflect.set(target, propertyKey, value, receiver);
+    // 执行观察者队列
+    arr.forEach(item => item());
+    return Reflect.set(target, propertyKey, value, receiver);
+  }
+}
+
+// 4.初始化Proxy对象，设置拦截
+let observer = obj =>  new Proxy(obj, handler);
+
+// 被代理对象
+let target = {
+  name: "Robin",
+  age: 26
+};
+// Proxy实例
+let proxy = observer(target);
+
+// 新的函数
+function printName() {
+  console.log(proxy.name);
+}
+
+// 添加监控
+watcher(printName);
+```
+
 ## 2.5 map&filer&reduce
 
 ### 2.5.1 map

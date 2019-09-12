@@ -71,6 +71,21 @@ let proxy = new Proxy({}, {
 });
 proxy.name = "cHeNg5";
 proxy.name;
-console.log(proxy);
+//console.log(proxy);
+
+console.log("------------------------------------------------");
+function getData(callback) {
+  let a = {
+    name: "cHeNg5",
+    age: 26
+  };
+  // setTimeout(function() {
+  //   callback(a);
+  // }, 1000);
+  callback(a);
+}
+getData((arg) => {
+  console.log(arg);
+})
 
 
