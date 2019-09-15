@@ -87,5 +87,29 @@ function getData(callback) {
 getData((arg) => {
   console.log(arg);
 })
+console.log("------------------------------------------------");
+function generator1() {
+
+}
+console.log(generator1());
+
+function* exampleYield(x) {
+  yield x + 1;
+  yield x + 2;
+  return x + 3;
+}
+let exe = exampleYield(1);
+// console.log(exe.next());
+// console.log(exe.next());
+// console.log(exe.next());
+// console.log(exe.next());
+
+for(let x of exe) {
+  console.log(x);
+}
+
+
+
+
 
 

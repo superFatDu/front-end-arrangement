@@ -146,3 +146,106 @@ if（!Array.isArray）{
 
 1. 并发是有同时处理多个任务的能力，但是不一定同时。（**轮流处理**）
 2. 并行是能同时处理多个任务，关键是同时。（**同时处理**）
+
+## 1.6 回调函数
+
+```js
+// 1. 方式1
+function say(value) {
+  alert(value);
+}
+function execute(someFunction, value) {
+  someFunction(value);
+}
+execute(say, "say hi");
+
+// 方式2
+execute(value => alert(value), "say hi");
+```
+
+![callback引入](./img/callback1.png)
+
+> A callback is a function that is passed as an argument to another function and is executed after its parent function has completed。
+
+### 1.6.1 示例
+
+![callback1](./img/callback2.png)
+![callback1](./img/callback3.png)
+
+## 1.7 Generator
+
+### 1.7.1 关于Generator
+
+> generator是ES6标准新引入的一种数据类型。一个generator看上去像一个函数，但是可以有多个返回。
+
+- 函数执行过程中，如果没有遇到return语句（函数末尾没有return，就是隐含的return undefined），控制权无法交会被调用的函数。
+
+```js
+function noReturn() {} => // 隐含return undefined
+console.log(noReturn()); // undefined
+```
+
+> generator和函数不同的是，generator是由function\*定义，由functio\*定义，由function\*定义，并且出来return语句，还可以用yield返回多次。
+
+```js
+function* exampleYield(x) {
+  yield x + 1;
+  yield x + 2;
+  return x + 3;
+}
+console.log(exampleYield(1)); // Object [Generator] {}
+```
+
+- 用函数的方式调用generator指挥返回一个Object，因为这只是创建了一generator的对象，还没有真正的执行它。
+- 调用generator对象有两个方法，一个是一次次地调用next()方法，另一个是for-of迭代generator对象。
+
+```js
+let eY = exampleYield(1);
+// 1. 方式一
+eY.next(); // {value: 2, done: false}
+eY.next(); // {value: 3, done: false}
+eY.next(); // {value: 4, done: true}
+eY.next(); // {value: undefined, done: true}
+
+// 2. 方式二
+for(let x of eY) {
+  console.log(x); // 2 3
+}
+```
+
+- 因为generator可以在执行的过程中多次返回，所以它看上去就像一个可以记住执行状态的函数。如果传参，那么传入的参数等于上一个yield的返回值。
+
+```js
+function *foo(x) {
+  let y = 2 * (yield (x + 1))
+  let z = yield (y / 3)
+  return (x + y + z)
+}
+let it = foo(5)
+console.log(it.next())   // => {value: 6, done: false}
+console.log(it.next(12)) // => {value: 8, done: false}
+console.log(it.next(13)) // => {value: 42, done: true}
+
+//1. 当执行第一个next()时，参数会被忽略，并且函数会暂停在yield（x + 1）出，所以返回5 + 1 = 6；
+
+//2. 当执行第二个next()时，传入的参数等于上衣个yield的返回值，所以y = 2 * 12;这一次函数会停留在yield（y / 3）= 24 / 3 = 8；
+
+//3. 当执行第三个next()时，传入的参数等于上一个yield的返回值，所以z = 13，所以return的返回值等于5 + 24 + 13 = 42
+```
+
+### 1.7.2解决问题
+
+```js
+// 解决回调地狱
+function* fetch() {
+  yield ajax(url, () => {});
+  yield ajax(url, () => {});
+  yield ajax(url, () => {});
+}
+let it = fetch();
+let result1 = it.next();
+let result2 = it.next();
+let result3 = it.next();
+```
+
+- 看上去代码是同步的，实际执行是异步的。
