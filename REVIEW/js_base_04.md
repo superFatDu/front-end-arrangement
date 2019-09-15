@@ -249,3 +249,117 @@ let result3 = it.next();
 ```
 
 - 看上去代码是同步的，实际执行是异步的。
+
+## 1.8 Promise
+
+> The Promise object represents the eventual completion(or failure) of an asynchronous operation, and its resulting value.（Promise对象用于表示一个异步操作的最终完成（或失败），及其结果值。）
+
+### 1.8.1 语法
+
+```js
+/*
+* Promise
+* @params executor 带有resolve和reject两个参数的函数。
+*/
+new Promise(function(resolve, reject) {...} /* executor */)
+```
+
+### 1.8.2 引入
+
+```js
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('success');
+  }, 300)
+});
+promise.then(res => {
+  console.log(res); // success
+});
+console.log(promise); // [object Promise]
+```
+
+### 1.8.3 介绍
+
+> Promise对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败绑定响应的处理方法（handler =》 function(resolve, reject) {...}）。
+
+#### 1.8.3.1 Promise状态
+
+1. pending: 初始状态，既不是成功，也不是失败状态。
+2. fulfilled: 意味着操作成功。
+3. rejected: 意味着操作失败。
+
+![promises](./img/promises.png)
+
+#### 1.8.3.2 方法
+
+1. Promise.all(iterable)
+
+> 返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都“完成（resolved）”或参数中不包含 promise 时回调完成（resolve）；如果参数中  promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。
+
+```js
+/*
+* @params iterable 一个可迭代对象，如Array或String。
+* @return 1. 如果传入的参数是一个空的可迭代对象，则返回一个已完成（already resolved）状态的 Promise;
+* @return 2. 如果传入的参数不包含任何 promise，则返回一个异步完成（asynchronously resolved） Promise。注意：Google Chrome 58 在这种情况下返回一个已完成（already resolved）状态的 Promise;
+* @return 3. 其它情况下返回一个处理中（pending）的Promise。这个返回的 promise 之后会在所有的 promise 都完成或有一个 promise 失败时异步地变为完成或失败。
+*/
+let promise1 = Promise.resolve(3);
+let promise2 = 42;
+let promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 100);
+});
+Promise.all([promise1, promise2, promise3]).then(res => {
+  console.log(res); // Array [3, 42, 100]
+})
+```
+
+2. Promise.race(iterable) 
+
+> 返回一个 promise，一旦迭代器中的某个promise解决或拒绝，返回的 promise就会解决或拒绝。
+
+```js
+var promise1 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 500, 'one');
+});
+
+var promise2 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 100, 'two');
+});
+
+Promise.race([promise1, promise2]).then(function(value) {
+  console.log(value); // "two"
+  // Both resolve, but promise2 is faster
+});
+```
+
+3. Promise.resolve(value)
+
+> 返回一个以给定值解析后的Promise 对象。
+
+```js
+/*
+* @ param value 将被Promise解析的参数，可以是一个Promise对象，也可以是一个thenable。
+*/
+let promise = Promise.resolve(123);
+promise.then(res => {
+  console.log(res); // 123
+})
+```
+
+4. Promise.reject(reason)
+
+> 返回一个带有拒绝原因reason参数的Promise对象。
+
+```js
+/*
+* @param reason 表示Promise被拒绝的原因。
+* @return 一个给定原因的被拒绝的Promise。
+*/
+Promise.reject("Testing static reject").then(function(reason) {
+  // 未被调用
+}, function(reason) {
+  console.log(reason); // "Testing static reject"
+});
+```
+
+## 1.9 async&await
