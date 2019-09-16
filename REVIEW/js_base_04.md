@@ -363,3 +363,86 @@ Promise.reject("Testing static reject").then(function(reason) {
 ```
 
 ## 1.9 async&await
+
+```js
+async function asyncFunc() {
+  await api.ajax(url, ...);
+}
+```
+
+- 由async声明的方法是异步方法，在方法体中可以使用await关键字，等待async操作对象的promise返回。这个函数总是返回一个promise，如果代码中有return <非 promise>语句，JavaScript会自动把返回的这个value值包装成promise的resolve值。
+- 声明方式如下：
+
+```js
+// 异步函数声明
+async function asyncFunc() {}
+
+// 异步函数表达式
+const asyncFunc = async function() {}
+
+// 异步函数定义
+let obj = {async asyncFunc() {}}
+
+// 异步箭头函数
+let asyncFunc = async () => {}
+```
+
+### 1.9.1 async
+
+```js
+async function func() {
+  return new Promise((resolve, reject) => {
+    resolve('This is a example');
+  })
+}
+func().then(res => {
+  console.log(res); // This is a example.
+});
+
+async function func1() {
+  return 'This would be packed as a promise';
+}
+func1().then(res => {
+  console.log(res); // This would be packed as a promise.
+})
+```
+
+- async的作用：
+
+1. 使函数总是返回一个promise。
+2. 允许在函数体中使用await。
+
+### 1.9.2 await
+
+1. await关键字可以让JavaScript等待，知道一个promise执行并返回结果，JavaScript才会继续向下执行。
+
+> let value = await promise;
+
+```js
+async function func() {
+  let promise = new Promise(resolve => {
+    setTimeout(resolve, 2000, "done");
+  });
+  let result = await promise; // 直到promise返回一个resolve值才继续向下走
+  console.log(result); // expected output: done
+}
+```
+
+2. 要使用await，则必须是一个异步函数，函数前面必须有async关键字。
+3. await是顺序执行的（注：Promise.all()是并行的）。
+
+```js
+// 顺序执行
+async function executeFunc() {
+  let result1 = await asyncFunc1();
+  let result2 = await asyncFunc2();
+}
+
+// 并行顺序
+async function executeFunc() {
+  const [result1, result2] = await Promise.all([
+    asyncFunc1(),
+    asyncFunc2()
+  ]);
+}
+```
