@@ -107,6 +107,23 @@ let exe = exampleYield(1);
 for(let x of exe) {
   console.log(x);
 }
+console.log("-----------------------简易Promise测试-------------------------");
+let MyPromise =  require('./myPromise');
+function promise() {
+  return new MyPromise((resolve, reject) => {
+    let num = Math.random();
+    if (num < 0.5) {
+      resolve(num);
+    } else {
+      reject('num大于0.5');
+    }
+  })
+}
+promise().then(res => {
+  console.log(res);
+}, err => {
+  console.log(err);
+})
 
 
 

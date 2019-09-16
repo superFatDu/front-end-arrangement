@@ -28,7 +28,7 @@ function Promise(executor) {
   };
   // 异常捕获
   try {
-    executor(resolve, reject);
+    executor(resolve, reject); 
   } catch (error) {
     reject(error);
   }
