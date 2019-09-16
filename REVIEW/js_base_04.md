@@ -362,6 +362,23 @@ Promise.reject("Testing static reject").then(function(reason) {
 });
 ```
 
+### 1.8.4 Promise的特点
+
+1. 对象状态不受外界影响。Promise对象代表一个异步操作，有三种状态（pending/fulfilled/rejected），只有异步操作的结果可以决定当前是哪一种状态，任何其他的操作都无法改变。
+2. 状态一旦改变，就不会再改变，任何时候都可以得到这个结果。
+
+### 1.8.5 Promise优缺点
+
+- 优点：
+
+1. 数据获取和逻辑分开，加强了代码的可维护性；更细的粒度，有利用代码复用。
+
+- 缺点：
+
+1. 无法取消Promise。一旦新建就会立即执行，无法中途取消。
+2. 如果不设置回调函数，Promise内部抛出的错误，无法反应到外部。
+3. 当状态处于pending时，无法得知目前进行到那一个阶段了，刚刚开始还是即将完成。
+
 ## 1.9 async&await
 
 ```js
@@ -446,3 +463,20 @@ async function executeFunc() {
   ]);
 }
 ```
+
+### 1.9.3 async和await优缺点
+
+- 优点：
+
+1. 相较于直接使用Promise，优点在于处理then的调用链，async/await更加清晰直接。
+
+- 缺点：
+
+1. 如果滥用await可能会出现性能问题，因为await会阻塞代码，可能后面的代码并不依赖await返回值，但还是得等待，倒是代码失去了并发性。
+
+### 1.9.4 async/await的实现原理
+
+> 其实async/await就是Generator函数的语法糖。
+
+1. async就是Generator函数的*。
+2. await就是Generator函数的yield。
