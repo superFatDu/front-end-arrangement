@@ -26,12 +26,12 @@ console.log(bar(6));
 
 ![execution_stack](./img/execution_stack.gif)
 
-### event loop
+### 1.1.3 event loop
 
 ![event_loop](./img/event_loop1.webp)
 
 ![event_loop](./img/event_loop.jpg)
 
-### Task Queue
+### 1.1.4 Task Queue
 
 > 见上一篇js_base_04.js。
