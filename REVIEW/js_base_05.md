@@ -28,6 +28,11 @@ console.log(bar(6));
 
 ### 1.1.3 event loop
 
+1. 同步和异步任务分别进入不同的执行"场所"，同步的进入主线程，异步的进入Event Table并注册函数。
+2. 当指定的事情完成时，Event Table会将这个函数移入Event Queue。
+3. 主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。
+4. 上述过程会不断重复，也就是常说的Event Loop(事件循环)。
+
 ![event_loop](./img/event_loop1.webp)
 
 ![event_loop](./img/event_loop.jpg)
