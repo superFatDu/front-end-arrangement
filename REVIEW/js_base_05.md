@@ -132,3 +132,58 @@ console.log('script end')
 #### 1.2.1.4 总结
 
 ![summary](./img/event_loop_summary.jpg)
+
+### 1.2.2 Node System
+
+![node_system](./img/nodesystem.png)
+
+1. 我们写的 js 代码会交给v8引擎进行处理
+2. 解析后的代码中可能会调用 Node Api, 会交给 libuv 库处理
+3. libuv 库负责 Node API 的执行。它将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。
+4. V8引擎再将结果返回给用户。
+
+#### 1.2.2.1 Node中的任务分类
+
+![任务分类](./img/node_tasks.png)
+
+1. timers（计时器）：执行setTimeout/setInterval的回调
+2. I/O callbacks：执行除了close callback/timer callback/setImmediate callback的其他回调。
+3. idle/prepare：node内部使用。
+4. poll（轮询）：获取新的I/O事件；node会在适当的条件下阻塞这里。
+5. check：处理setImmediate的回调。
+6. close callbacks：处理关闭的回调，如socket.on("close")。
+
+- timer
+
+> 一个timer指定一个下限时间而不是准确时间，在达到这个下限时间后执行回调。在指定时间过后，timers会尽可能早地执行回调，但系统调度或者其它回调的执行可能会延迟它们。
+
+**注意：1.技术上来说，poll 阶段控制 timers 什么时候执行;2.这个下限时间有个范围：[1, 2147483647]，如果设定的时间不在这个范围，将被设置为1。**
+
+- I/O callbacks
+
+> 这个阶段执行一些系统操作的回调。比如TCP错误，如一个TCP socket在想要连接时收到ECONNREFUSED,类unix系统会等待以报告错误，这就会放到 I/O callbacks 阶段的队列执行。
+
+- poll
+
+1. 执行下限时间已经达到的timers的回调。
+2. 处理 poll 队列里的事件。
+
+- check
+
+> 这个阶段允许在 poll 阶段结束后立即执行回调。如果 poll 阶段空闲，并且有被setImmediate()设定的回调，event loop会转到 check 阶段而不是继续等待。
+
+1. setImmediate()实际上是一个特殊的 timer，跑在event loop中一个独立的阶段。它使用libuv的API来设定在 poll 阶段结束后立即执行回调。
+2. 通常上来讲，随着代码执行，event loop终将进入 poll 阶段，在这个阶段等待 incoming connection, request 等等。但是，只要有被setImmediate()设定了回调，一旦 poll 阶段空闲，那么程序将结束 poll 阶段并进入 check 阶段，而不是继续等待 poll 事件们 （poll events）。
+
+- close callbacks
+
+> 如果一个 socket 或 handle 被突然关掉（比如 socke.on(‘close’)），close事件将在这个阶段被触发，否则将通过 process.nextTick() 触发。
+
+- 其他
+
+1. 在 nodejs 中微任务是在当前执行栈的尾部下一次 Event Loop（主线程读取”任务队列”）之前触发，并且每一次任务队列切换的时候都会清空当前一轮中微任务中的事件。
+2. 而每次切换到宏任务中的某一任务队列时， 都会清空队列中在本轮循环加入的 callback 函数, 清空之后， 查看微任务中如果有放入新的事件，拿到执行栈中执行， 执行完之后再切换到下一任务队列。
+
+![node_step](./img/node_step.jpg)
+
+> 先把主执行栈的内容执行完，然后切换放定时器的队列，在切换前会把微任务队列执行完，如果定时器的队列没到时间就往下走，切换到 放I/O的队列中，在切换前再把微任务队列执行完，I/O 走完走到 check阶段，在切换前还是会把微任务队列执行完，当没有check阶段 页面中还有定时器的时候 会在 i/o那个队列等着 扫描定时器 如果达到了时间在执行 ，程序结束了就结束了.
