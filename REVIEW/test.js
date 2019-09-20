@@ -125,8 +125,58 @@ promise().then(res => {
   console.log(err);
 })
 
+console.log("-----------------------扁平化对象-------------------------");
+let temptObj = {
+  obj1: {
+    attr1: {
+      isCheck: true,
+      days: 2
+    },
+    attr2: {
+      isCheck: false
+    },
+    attr3: {
+      isCheck: true,
+      days: 2
+    }
+  },
+  obj2: {
+    attr4: {
+      isCheck: true,
+      percent: 34
+    },
+    attr5: {
+      isCheck: false
+    },
+    attr6: {
+      isCheck: true,
+      percent: 56
+    }
+  }
+}
+function objIterator(opt, init) {
+  let temptArr = init;
+  Object.keys(opt).forEach(item => {
+    if (typeof opt[item].isCheck !== "undefined") {
+      temptArr.push(opt[item]);
+    } else {
+      objIterator(opt[item], temptArr);
+    }
+  })
+  return temptArr;
+}
 
-
+//console.log(Array.prototype.slice.call(temptObj))
+let returnArr = objIterator(temptObj, []);
+for(let item of returnArr) {
+  if (Object.keys(item).length === 2 && item.isCheck) {
+    if (item.days === "" || item.percent ==="") {
+      console.log("error");
+    } else {
+      console.log(item);
+    }
+  }
+}
 
 
 
