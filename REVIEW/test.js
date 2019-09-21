@@ -177,6 +177,13 @@ for(let item of returnArr) {
     }
   }
 }
+console.log("-----------------------数组concat-------------------------");
+let errorList = {
+  list1: ["", "", ""],
+  list2: ["", "", ""]
+};
+let concatList = errorList.list1.concat(errorList.list2);
+console.log(concatList.join("") === "");
 
 
 
