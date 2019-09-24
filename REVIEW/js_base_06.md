@@ -78,3 +78,46 @@ Function.prototype.myBind = function(context) {
   }
 }
 ```
+
+## 2. new
+
+### 2.1 调用new
+
+1. 生成了一个新的对象。
+2. 链接到原型。
+3. 绑定this。
+4. 返回新的对象。
+
+### 2.2 new实现
+
+```js
+function create() {
+  let obj = {};
+  let con = [].shift.call(arguments);
+  obj.__proto__ = con.prototype;
+  let result = con.apply.call(obj, arguments);
+  return result instanceof Object ? result : obj;
+}
+// 1. 创建一个空对象
+// 2. 获取构造函数
+// 3. 这是空对象的原型
+// 4. 绑定this并执行构造函数
+// 5. 确保返回值为对象
+```
+
+### 2.3 通过new的方式创建对象和通过字面量创建有什么区别
+
+1. 字面量创建对象，不会调用Object构造函数，简洁可读性能好。
+2. new Object()方式创建对象本质上是方法调用，涉及到在proto链中遍历寻找该方法，之后又会产生调用该方法的堆栈调用信息，方法调用结束，又要释放堆栈，浪费性能。
+3. 能通过字面量定义的对象，不推荐调用Object构造方法定义。
+
+### 2.4 其他
+
+```js
+// function就是语法糖
+function foo() {}
+foo = new Function();
+
+let obj = {name: "Robin"}
+obj = new Object()
+```
