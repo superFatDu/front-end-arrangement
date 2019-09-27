@@ -70,5 +70,51 @@ element.addEventListener(event, function, useCapture)
 </html>
 ```
 
-## 1.2 事件代理
+## 1.2 事件委托(事件代理)
 
+![event_proxy](./img/event_proxy.webp)
+
+### 1.2.1 原理
+
+- 事件委托利用的是事件冒泡的原理，将事件注册在事件目标（事件源）的上层级。当事件目标（事件源）触发事件后会向上冒泡，然后执行注册的事件。
+
+### 1.2.2 好处
+
+1. 效率高，管理的函数变少了，不必为每一个元素都添加监听函数。
+2. 可以方便地动态添加和修改元素，不需要因为元素的改动修改绑定的事件。
+3. JavaScript和DOM节点之间的关联变少了，这样降低了因为循环而带来的内存泄漏的发生概率。
+
+### 1.2.3 例子
+
+```js
+// html
+<div id="parent">
+  <div>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+      <li>444</li>
+    </ul>
+  </div>
+</div>
+
+// js
+let eleParent = document.getElementById("parent");
+eleParent.onmouseover = ev => {
+  ev = ev || window.event;
+  let eleTarget = ev.srcElement || ev.target;
+  if (eleTarget.nodeName.toLowerCase() === "li") {
+    eleTarget.style["color"] = "red";
+  }
+};
+eleParent.onmouseout = ev => {
+  ev = ev || window.event;
+  let eleTarget = ev.srcElement || ev.target;
+  if (eleTarget.nodeName.toLowerCase() === "li") {
+    eleTarget.style["color"] = "#333333";
+  }
+}
+```
+
+## 1.3 跨域
