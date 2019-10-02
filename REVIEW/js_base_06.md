@@ -34,7 +34,7 @@ Function.prototype.myCall = function(context) {
 }
 ```
 
-#### 1.1.2 apply实现 
+#### 1.1.2 apply实现
 
 ```js
 Function.prototype.myApply = function(context) {

@@ -376,7 +376,7 @@ var socket = io('http://www.domain2.com:8080');
 socket.on('connect', function() {
     // 监听服务端消息
     socket.on('message', function(msg) {
-        console.log('data from server: ---> ' + msg); 
+        console.log('data from server: ---> ' + msg);
     });
     // 监听服务端关闭
     socket.on('disconnect', function() { 
