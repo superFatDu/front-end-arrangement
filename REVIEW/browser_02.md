@@ -116,3 +116,67 @@ this.addEventListener('fetch', funtion(event) {
 #### 1.1.1.4 Push Cache
 
 > Push Cache是HTTP/2中的内容，当以上三种都没有命中，他才会被使用。Push Cache的缓存时间很短，只存在Session(会话)中，一旦会话结束就被释放。
+
+### 1.1.2 缓存策略
+
+> 通常浏览器缓存策略分为两种：强缓存和协商缓存。缓存策略的实现都是通过设置HTTP Header。
+
+#### 1.1.2.1 强缓存
+
+> 强缓存可以通过设置两种HTTP Header来实现：Expires和Cache-Control。强缓存表示在缓存期间不需要再次发起请求。
+
+##### 1.1.2.1.1 Expires
+
+```js
+Expires: Web, 12 Oct 2019 21:00:00 GMT
+```
+
+- Expires是HTTP/1的产物，表示资源会在 Web, 12 Oct 2019 21:00:00 GMT 后过期，需要再次请求。并且 Expires **受限于本地时间**，如果修改了本地时间，可能会**造成缓存失效**。
+
+##### 1.1.2.1.2 Cache-Control
+
+```js
+Cache-Control: max-age=30
+```
+
+- Cache-Control出现在HTTP/1.1，**优先级高于Expires**。该属性表示资源在30秒后过期，需要再次请求。
+
+![Cache-Control](./img/cache-control.webp)
+![Cache-Control-dir](./img/cach-control-dir.webp)
+
+#### 1.1.2.2 协商缓存
+
+> 如果缓存过期了，就需要发起请求验证资源是否有更新。协商缓存可以通过设置两种HTTP Header实现：Last-Modified和ETag。
+
+- 当浏览器发起请求验证资源时，如果资源没有做改变，那么服务端就会返回 304 状态码，并且更新浏览器缓存有效期。
+
+![协商缓存](./img/consult-cache.webp)
+
+##### 1.1.2.2.1 Last-Modified 和 If-Modified-Since
+
+> Last-Modified 表示本地文件最后修改日期，If-Modified-Since 会将 Last-Modified 的值发送给服务器，询问服务器在该日期后资源是否有更新，有更新的话就会将新的资源发送回来，否则返回 304 状态码。
+
+- 弊端：
+
+1. 如果本地打开缓存文件，即使没有对文件进行修改，但还是会造Last-Modified 被修改，服务端不能命中缓存导致发送相同的资源。
+2. 因为 Last-Modified 只能以秒计时，如果在不可感知的时间内修改完成文件，那么服务端会认为资源还是命中了，不会返回正确的资源。
+
+##### 1.1.2.2.2 ETag 和 If-None-Match
+
+> ETag 类似于文件指纹，If-None-Match 会将当前 ETag 发送给服务器，询问该资源 ETag 是否变动，有变动的话就将新的资源发送回来。并且 ETag 优先级比 Last-Modified 高。
+
+#### 1.1.2.3 浏览器默认缓存
+
+> 如果没有设置缓存策略，浏览器会采用一个启发式的算法，通常会取响应头中的 Date 减去 Last-Modified 值的 10% 作为缓存时间。
+
+### 1.1.3 应用场景
+
+#### 1.1.3.1 频繁变动的资源
+
+- 对于频繁变动的资源，首先需要使用 Cache-Control: no-cache 使浏览器每次都请求服务器，然后配合 ETag 或者 Last-Modified 来验证资源是否有效。这样的做法虽然不能节省请求数量，但是能显著减少响应数据大小。
+
+#### 1.1.3.2 代码文件
+
+- 这里特指除了 HTML 外的代码文件，因为 HTML 文件一般不缓存或者缓存时间很短。
+
+- 一般来说，现在都会使用工具来打包代码，那么我们就可以对文件名进行哈希处理，只有当代码修改后才会生成新的文件名。基于此，我们就可以给代码文件设置缓存有效期一年 Cache-Control: max-age=31536000，这样只有当 HTML 文件中引入的文件名发生了改变才会去下载最新的代码文件，否则就一直使用缓存。
