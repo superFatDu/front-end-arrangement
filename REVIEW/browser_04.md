@@ -51,3 +51,6 @@ sum(4);
 ```
 
 - 没办法给所有的函数加括号，解决方案：[optimize-js](https://github.com/nolanlawson/optimize-js)
+
+### 1.1.2 图片优化
+
