@@ -169,3 +169,4 @@ foo.bind(a)() // yck
 ```
 
 ![this](./img/this_logic.jpg)
+
