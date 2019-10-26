@@ -1,5 +1,5 @@
 /**
- * 防抖函数 单位delay时间内如果重复触发，则重新计时
+ * 防抖函数 单位delay时间内，如果重复触发则清空timer重新计时
  * @param fn {Function}  callback
  * @param delay {Number} 
  * @returns {Function}
